@@ -1,0 +1,41 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --color-blue: #3b82f6;
+  --color-white: #fff;
+  --color-gray: #94a3b8;
+  --color-gray-light: #f5f5f5;
+  --color-gray-dark: #64748b;
+  --color-black: #000;
+  --tw-bg-opacity: 1;
+}
+
+@font-face {
+  font-family: 'PTSansCaption';
+  src: url('./../assets/fonts/PT_Sans_Caption/PTSansCaption-Regular.ttf')
+      format('truetype'),
+    url('./../assets/fonts/PT_Sans_Caption/PTSansCaption-Bold.ttf')
+      format('truetype');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'PTSansCaption';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container-1440 {
+  width: 100%;
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 1440px;
+}
