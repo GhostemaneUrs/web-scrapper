@@ -1,58 +1,73 @@
 import React from 'react'
 import { Outlet, Link, useLocation } from 'react-router-dom'
+import { RiFileExcel2Line } from 'react-icons/ri'
+import {
+  AiOutlineFileSearch,
+  AiOutlineFundView,
+  AiOutlinePoweroff,
+} from 'react-icons/ai'
 
 const index = () => {
   const location = useLocation()
   const urlCurrent = location.pathname
   return (
-    <div className='lg:flex lg:min-h-screen'>
-      <div className='lg:w-1/4 bg-blue-900 px-5 py-10'>
-        <h2 className='text-3xl font-black text-center text-white uppercase'>
-          Validador De Derechos
-        </h2>
-        <div className='mt-10'>
-          <Link
-            to='/validator/consult'
-            className={`${
-              urlCurrent === '/validator/consult' ? 'text-blue-300' : 'text-white'
-            } text-2xl block mt-2 hover:text-blue-300`}
-          >
-            Consultar derechos
-          </Link>
-          <Link
-            to='/validator/detail'
-            className={`${
-              urlCurrent === '/validator/detail' ? 'text-blue-300' : 'text-white'
-            } text-2xl block mt-2 hover:text-blue-300`}
-          >
-            Visualizar clientes
-          </Link>
-          <Link
-            to='/validator/upload'
-            className={`${
-              urlCurrent === '/validator/upload'
-                ? 'text-blue-300'
-                : 'text-white'
-            } text-2xl block mt-2 hover:text-blue-300`}
-          >
-            Cargar Excel
-          </Link>
-          {/* <Link
-            to='/validator/cerrar'
-            className={`${
-              urlCurrent === '/validator/upload'
-                ? 'text-blue-300'
-                : 'text-white'
-            } text-2xl block mt-2 hover:text-blue-300`}
-          >
-            Cerrar sesión
-          </Link> */}
+    <>
+      <div className='flex'>
+        <div className='w-[3.8rem] bg-blue-900 px-4 py-10 overflow-hidden hover:w-[21rem] h-screen fixed ease-out duration-300 flex'>
+          <div className='flex flex-col'>
+            <div className='mb-7'>
+              <Link
+                to='/validator'
+                className={`${
+                  urlCurrent === '/validator' ? 'text-blue-300' : 'text-white'
+                } text-2xl hover:text-blue-500 flex gap-4 min-w-[21rem]`}
+              >
+                <AiOutlineFileSearch size={'2rem'} /> Consultar
+              </Link>
+            </div>
+            <div className='mb-7'>
+              <Link
+                to='/validator/detail'
+                className={`${
+                  urlCurrent === '/validator/detail'
+                    ? 'text-blue-300'
+                    : 'text-white'
+                } text-2xl hover:text-blue-300 flex gap-4 min-w-[21rem]`}
+              >
+                <AiOutlineFundView size={'2rem'} /> Visualizar
+              </Link>
+            </div>
+            <div>
+              <Link
+                to='/validator/upload'
+                className={`${
+                  urlCurrent === '/validator/upload'
+                    ? 'text-blue-300'
+                    : 'text-white'
+                } text-2xl hover:text-blue-300 flex gap-4 min-w-[21rem]`}
+              >
+                <RiFileExcel2Line size={'2rem'} /> Cargar
+              </Link>
+            </div>
+            <div className='mt-auto'>
+              <Link
+                to={'/'}
+                className={`${
+                  urlCurrent === '/cerrar-sesion'
+                    ? 'text-blue-300'
+                    : 'text-white'
+                } text-2xl hover:text-blue-300 flex gap-4 min-w-[21rem] cursor-pointer`}
+              >
+                <AiOutlinePoweroff size={'2rem'} /> Cerrar sesion
+              </Link>
+            </div>
+          </div>
+        </div>
+        <div className='w-full scroll pl-[5.8rem] py-[2.5rem] pr-[2rem]'>
+          <Outlet />
         </div>
       </div>
-      <div className='lg:w-3/4 p-2 lg:p-10 scroll'>
-        <Outlet />
-      </div>
-    </div>
+    </>
   )
 }
 
