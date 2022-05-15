@@ -27,9 +27,9 @@ const index = () => {
             </div>
             <div className='mb-7'>
               <Link
-                to='/validator/detail'
+                to='/validator/view'
                 className={`${
-                  urlCurrent === '/validator/detail'
+                  urlCurrent === '/validator/view'
                     ? 'text-blue-300'
                     : 'text-white'
                 } text-2xl hover:text-blue-300 flex gap-4 min-w-[21rem]`}
