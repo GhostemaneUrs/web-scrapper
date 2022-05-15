@@ -32,7 +32,7 @@ const index = () => {
                     <td className='p-3'>
                       <div className='flex justify-center items-center'>
                         <HiEye
-                          className='text-yellow-500 hover:text-yellow-600 cursor-pointer text-xl'
+                          className='text-indigo-500 hover:text-indigo-600 cursor-pointer text-xl'
                           onClick={() => {
                             navigate(`/validator/detail`)
                           }}
