@@ -29,7 +29,6 @@ const index = () => {
           <div className='space-y-4 text-center'>
             <p className='font-medium text-lg text-gray-600 mb-10'>Log in!</p>
           </div>
-
           <div role='hidden' className='border-t' />
           <Formik
             initialValues={{
@@ -77,11 +76,6 @@ const index = () => {
                       Login
                     </span>
                   </button>
-                  <Link to='/register'>
-                    <span className='text-md tracking-wide text-blue-600 hover:text-blue-700'>
-                      Don't have an account with us?
-                    </span>
-                  </Link>
                 </div>
                 <div role='hidden' className='mt-12 border-t' />
               </Form>

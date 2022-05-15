@@ -5,11 +5,11 @@ const index = () => {
   return (
     <>
       {/* imagen de la entidad con contenedor flex */}
-      <div className='m-auto bg-white shadow-md px-5 py-5 rounded-xl w-2/3'>
+      <div className='m-auto bg-white shadow-xl px-5 py-5 rounded-xl w-full 2xl:w-2/3 '>
         <h1 className='text-2xl text-center uppercase font-bold mb-10'>
           Detalle del cliente
         </h1>
-        <div className='flex flex-col xl:flex-row items-center gap-7 justify-center'>
+        <div className='flex flex-col lg:flex-row items-center gap-7 justify-center'>
           <div className='w-full max-w-[500px]'>
             <img src={sura} alt='entidad-imagen' />
           </div>
