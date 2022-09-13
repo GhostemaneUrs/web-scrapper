@@ -9,7 +9,7 @@ import { Routes, Route } from 'react-router-dom'
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path='/' element={<Login />} />
+      <Route path='/login' element={<Login />} />
       <Route path='/validator' element={<Home />}>
         <Route index element={<ConsultClient />} />
         <Route path='view' element={<ViewClients />} />

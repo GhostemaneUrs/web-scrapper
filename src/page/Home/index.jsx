@@ -53,17 +53,17 @@ const index = () => {
               <Link
                 to={'/'}
                 className={`${
-                  urlCurrent === '/cerrar-sesion'
+                  urlCurrent === '/cerrar-sesión'
                     ? 'text-blue-300'
                     : 'text-white'
                 } text-2xl hover:text-blue-300 flex gap-4 min-w-[21rem] cursor-pointer`}
               >
-                <AiOutlinePoweroff size={'2rem'} /> Cerrar sesion
+                <AiOutlinePoweroff size={'2rem'} /> Cerrar sesión
               </Link>
             </div>
           </div>
         </div>
-        <div className='w-full scroll pl-[5.8rem] py-[2.5rem] pr-[2rem]'>
+        <div className='w-full container-1440'>
           <Outlet />
         </div>
       </div>
