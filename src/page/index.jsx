@@ -4,9 +4,31 @@ import ViewClients from './Client/ViewClients'
 import DetailPatient from './Client/DetailPatient'
 import UploadClient from './Client/UploadClient'
 import ConsultClient from './Client/ConsultClient'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
 
 const AppRouter = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const dispatch = useDispatch()
+  const loggedOutRoutes = ['/login']
+  const urlCurrent = location.pathname
+  const { user } = useSelector(state => state.auth)
+
+  useEffect(() => {
+    const { pathname } = location
+    if (!user) {
+      const redirect = loggedOutRoutes.every(
+        route => !pathname.startsWith(route)
+      )
+      if (redirect && pathname !== '/login') navigate('/login')
+    } else {
+      const redirect = loggedOutRoutes.some(route => pathname.startsWith(route))
+      if (redirect || pathname === '/') navigate('/login')
+    }
+  }, [dispatch])
+
   return (
     <Routes>
       <Route path='/login' element={<Login />} />
