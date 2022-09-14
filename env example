@@ -1,0 +1,7 @@
+# Enviroment variables for staging or development
+# -------------------------------------------------------- #
+VITE_APP_URL_PROTOCOL=
+VITE_APP_URL_BASE=
+VITE_APP_URL_GATEWAY=
+VITE_APP_API_VERSION=
+# -------------------------------------------------------- #
