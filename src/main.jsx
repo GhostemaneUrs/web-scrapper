@@ -1,13 +1,18 @@
-import App from './page/index'
+import App from './page'
 import React from 'react'
 import './theme/global.scss'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter } from "react-router-dom";
+import { Provider } from 'react-redux'
+import { persistor, store } from './redux/store'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter } from 'react-router-dom'
+import { PersistGate } from 'redux-persist/integration/react'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <App />
+      </PersistGate>
+    </Provider>
   </BrowserRouter>
 )

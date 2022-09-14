@@ -25,7 +25,7 @@ const index = () => {
                 <AiOutlineFileSearch size={'2rem'} /> Consultar
               </Link>
             </div>
-            <div className='mb-7'>
+            {/* <div className='mb-7'>
               <Link
                 to='/validator/view'
                 className={`${
@@ -36,7 +36,7 @@ const index = () => {
               >
                 <AiOutlineFundView size={'2rem'} /> Visualizar
               </Link>
-            </div>
+            </div> */}
             <div>
               <Link
                 to='/validator/upload'
@@ -53,17 +53,17 @@ const index = () => {
               <Link
                 to={'/'}
                 className={`${
-                  urlCurrent === '/cerrar-sesion'
+                  urlCurrent === '/cerrar-sesión'
                     ? 'text-blue-300'
                     : 'text-white'
                 } text-2xl hover:text-blue-300 flex gap-4 min-w-[21rem] cursor-pointer`}
               >
-                <AiOutlinePoweroff size={'2rem'} /> Cerrar sesion
+                <AiOutlinePoweroff size={'2rem'} /> Cerrar sesión
               </Link>
             </div>
           </div>
         </div>
-        <div className='w-full scroll pl-[5.8rem] py-[2.5rem] pr-[2rem]'>
+        <div className='w-full container-1440'>
           <Outlet />
         </div>
       </div>

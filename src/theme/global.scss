@@ -33,6 +33,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+input[type='file'] {
+  display: none;
+}
+
 .container-1440 {
   width: 100%;
   padding: 1rem;
@@ -45,4 +49,34 @@ body {
   padding: 1rem;
   margin: 0 auto;
   max-width: 800px;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.swal2-confirm {
+  width: 230px !important;
+  color: #fff !important;
+  background-color: #312e81 !important;
+  &:hover {
+    background-color: #312e81 !important;
+  }
+}
+
+.swal2-cancel {
+  width: 135px;
+  font-weight: 500 !important;
+  color: #312e81 !important;
+  border-radius: 32px !important;
+  border: 1px solid #312e81 !important;
+  background-color: #ffff !important;
+  &:hover {
+    color: var(--deep-orange) !important;
+    border: 1px solid var(--deep-orange) !important;
+    background-color: var(--deep-orange-10) !important;
+  }
 }
