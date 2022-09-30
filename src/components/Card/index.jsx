@@ -25,7 +25,7 @@ const index = () => {
           </h1>
         </div>
         <div className='flex flex-col xl:flex-row items-center gap-7 justify-center'>
-          <div className='xl:grid xl:grid-cols-2'>
+          <div className='xl:grid xl:grid-cols-2 w-full justify-center items-center'>
             <p className='font-bold mb-3 text-gray-700 uppercase'>
               Tipo de identificación:
               <span className='normal-case font-normal'>
@@ -37,7 +37,7 @@ const index = () => {
               Identificación:
               <span className='normal-case font-normal'> {document?.doc} </span>
             </p>
-            <p className='font-bold mb-3 text-gray-700 uppercase w-full max-w-[400px]'>
+            <p className='font-bold mb-3 text-gray-700 uppercase '>
               Nombre:
               <span className='normal-case font-normal'>
                 {' '}

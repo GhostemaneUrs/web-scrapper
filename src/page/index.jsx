@@ -31,7 +31,7 @@ const AppRouter = () => {
 
   return (
     <Routes>
-      <Route path='/login' element={<Login />} />
+      <Route path='/' element={<Login />} />
       <Route path='/validator' element={<Home />}>
         <Route index element={<ConsultClient />} />
         <Route path='view' element={<ViewClients />} />
