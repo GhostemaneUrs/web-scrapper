@@ -25,7 +25,7 @@ const index = () => {
                 <tbody>
                   {/* Aqui va el map de los datos de los clientes */}
                   <tr className='text-center border-b hover:bg-gray-50 cursor-pointer'>
-                    <td className='p-3'>Andres Felipe Jaramillo Gonzalez</td>
+                    <td className='p-3'>Andres Jaramillo</td>
                     <td className='p-3'>Sura</td>
                     <td className='p-3'>JaramilloG1999@outlook.com</td>
                     <td className='p-3'>3043512931</td>

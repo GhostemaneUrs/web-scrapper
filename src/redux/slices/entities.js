@@ -87,12 +87,15 @@ export const getEntity = createAsyncThunk(
   'entity/getEntity',
   async (data, thunkApi) => {
     thunkApi.dispatch(setLoading(true))
-    await fetch(`${URL_GATEWAY}/entity/`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
+    await fetch(
+      `${URL_GATEWAY}/entity/${data ? `?${new URLSearchParams(data)}` : ''}`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
       .then(res => {
         res.json().then(data => {
           if (data.statusCode === 200) {
@@ -156,16 +159,14 @@ export const getAffiliates = createAsyncThunk(
         res.json().then(data => {
           if (data.statusCode === 200) {
             thunkApi.dispatch(setUser(data.results))
-            thunkApi.dispatch(setUsers(...users, data.results))
             thunkApi.dispatch(setLoadingValidation(false))
           }
           if (data.statusCode === 400) {
             Swal.fire({
-              timer: 3000,
               icon: 'error',
               title: 'Error',
-              text: data.message,
-              showConfirmButton: false,
+              text: data.msg,
+              showConfirmButton: true,
             })
             thunkApi.dispatch(setLoadingValidation(false))
           }
@@ -174,6 +175,77 @@ export const getAffiliates = createAsyncThunk(
               icon: 'error',
               title: 'Error',
               text: data.message,
+              showConfirmButton: true,
+            }).then(result => {
+              if (result.isConfirmed) {
+                thunkApi.dispatch(logout())
+              }
+            })
+          }
+          if (data.statusCode === 500) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: data.msg,
+              showConfirmButton: true,
+              confirmButtonText: 'Aceptar',
+            })
+            thunkApi.dispatch(setLoadingValidation(false))
+          }
+        })
+      })
+      .catch(err => {
+        if (err) {
+          Swal.fire({
+            timer: 3000,
+            icon: 'error',
+            title: 'Error',
+            text: 'Error de conexión',
+            showConfirmButton: false,
+          })
+        }
+      })
+  }
+)
+
+export const uploadFile = createAsyncThunk(
+  'entity/uploadFile',
+  async (data, thunkApi) => {
+    let fd = new FormData()
+    Object.keys(data).forEach(key => {
+      fd.append(key, data[key])
+    })
+    thunkApi.dispatch(setLoading(true))
+    await fetch(`${URL_GATEWAY}/loadExcel/`, {
+      method: 'POST',
+      body: fd,
+    })
+      .then(res => {
+        res.json().then(data => {
+          if (data.statusCode === 201) {
+            Swal.fire({
+              timer: 3000,
+              icon: 'success',
+              title: 'Éxito',
+              text: data.msg,
+              showConfirmButton: false,
+            })
+            thunkApi.dispatch(setLoading(false))
+          }
+          if (data.statusCode === 400) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: data.msg,
+              showConfirmButton: true,
+            })
+            thunkApi.dispatch(setLoading(false))
+          }
+          if (data.statusCode === 401) {
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: data.msg,
               showConfirmButton: true,
             }).then(result => {
               if (result.isConfirmed) {

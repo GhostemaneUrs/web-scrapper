@@ -25,7 +25,7 @@ const index = () => {
                 <AiOutlineFileSearch size={'2rem'} /> Consultar
               </Link>
             </div>
-            <div className='mb-7'>
+            {/* <div className='mb-7'>
               <Link
                 to='/validator/view'
                 className={`${
@@ -36,7 +36,7 @@ const index = () => {
               >
                 <AiOutlineFundView size={'2rem'} /> Visualizar
               </Link>
-            </div>
+            </div> */}
             <div>
               <Link
                 to='/validator/upload'

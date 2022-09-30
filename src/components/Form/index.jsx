@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 import { Formik, Form, Field } from 'formik'
 import { useDispatch, useSelector } from 'react-redux'
 import { getAffiliates, getEntity } from '../../redux/slices/entities'
+import { setDocument } from '../../redux/slices/users'
 
 const index = () => {
   const dispatch = useDispatch()
@@ -16,20 +17,17 @@ const index = () => {
     entityType: Yup.string().required('El tipo de entidad es requerido'),
   })
 
-  const [validateUser, setValidateUser] = useState({
-    doc: '',
-    entity: '',
-    docType: '',
+  const [filters, setFilters] = useState({
     entityType: '',
   })
 
   useEffect(() => {
-    dispatch(getEntity())
-  }, [])
+    dispatch(getEntity(filters))
+  }, [filters])
 
   const handleSubmit = values => {
-    setValidateUser(values)
     dispatch(getAffiliates(values))
+    dispatch(setDocument({ doc: values?.doc, docType: values?.docType }))
   }
 
   return (
@@ -45,8 +43,9 @@ const index = () => {
         handleSubmit(values)
         resetForm()
       }}
+      onChan
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, handleChange }) => (
         <Form
           className='bg-white shadow-md rounded-xl py-10 px-5'
           autoComplete='off'
@@ -59,6 +58,10 @@ const index = () => {
               as='select'
               name='entityType'
               className='block w-full p-2 bg-gray-100 outline-none'
+              onChange={e => {
+                handleChange(e)
+                setFilters({ entityType: e.target.value })
+              }}
             >
               <option defaultChecked value='none'>
                 -Seleccione-
