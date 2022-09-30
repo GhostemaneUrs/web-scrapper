@@ -16,7 +16,7 @@ const AppRouter = () => {
   const urlCurrent = location.pathname
   const { user } = useSelector(state => state.auth)
 
-  useEffect(() => {
+  /* useEffect(() => {
     const { pathname } = location
     if (!user) {
       const redirect = loggedOutRoutes.every(
@@ -27,7 +27,7 @@ const AppRouter = () => {
       const redirect = loggedOutRoutes.some(route => pathname.startsWith(route))
       if (redirect || pathname === '/') navigate('/login')
     }
-  }, [dispatch])
+  }, [dispatch]) */
 
   return (
     <Routes>
